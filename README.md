@@ -7,6 +7,8 @@
 | Saúl Otoniel Valdez Vasquez | VV22029 |
 | Jeovanny Alexander Melgares Lovo | ML21016 |
 | Salvador Enrique Quezada Campos | QC07003 |
+| Hector Mauricio Contreras Cruz | CC22056 |
+| Alexis Alfonso Alvarenga Alvarenga | AA22044 |
 
 ## Descripción
 
@@ -28,7 +30,7 @@ Proyecto final web en **Laravel**.
 1. Clonar el repositorio y entrar al proyecto:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-proyecto.git
+   git clone https://github.com/Cristhoper-Mendez/BaseProject.git
    cd tu-proyecto
 
 2. Instalar dependencias
