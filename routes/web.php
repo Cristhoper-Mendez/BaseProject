@@ -7,7 +7,8 @@ use App\Http\Controllers\Backend\Roles\RolesController;
 use App\Http\Controllers\Backend\Roles\PermisoController;
 use App\Http\Controllers\Backend\Perfil\PerfilController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
-use App\Http\Controllers\Backend\Registro\RegistroController;
+use App\Http\Controllers\Backend\Registro\RegistroController; 
+use App\Http\Controllers\LibroController;
 
 
 
@@ -57,5 +58,8 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
-// --- Calculadora ---
+// --- XML ROUTES 
+Route::get('/libros', [LibroController::class, 'mostrarLibros'])->name('redirect.dashboard.libros');// --- Calculadora ---\
+
+// --- Calculadora ROUTES 
 Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora.index');
