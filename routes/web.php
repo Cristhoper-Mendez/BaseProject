@@ -12,7 +12,7 @@ use App\Http\Controllers\Backend\Registro\RegistroController;
 
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
-
+use App\Http\Controllers\Frontend\Calculadora\CalculadoraController;
 
 // --- LOGIN ---
 
@@ -57,4 +57,5 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
-
+// --- Calculadora ---
+Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora.index');

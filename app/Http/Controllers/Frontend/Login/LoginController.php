@@ -18,10 +18,6 @@ class LoginController extends Controller
 
     // retorna vista de login
     public function index(){
-        $pass = Hash::make("asdasd");
-        info($pass);
-
-
         return view('frontend.login.vistalogin');
     }
 
