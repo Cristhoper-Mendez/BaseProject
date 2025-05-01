@@ -1,4 +1,3 @@
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" >
@@ -38,28 +37,32 @@
                         </li>
 
                     </ul>
+
+                    <a href="#" class="nav-link nav-">
+                        <i class="far fa-edit"></i>
+                        <p>
+                            Libros
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('redirect.dashboard.libros') }}" target="frameprincipal" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Registros</p>
+                            </a>
+                        </li>
+
+    
+                    </ul>
+
+
+
                  </li>
                 @endcan
 
-                <li class="nav-item">
 
-                    <a href="#" class="nav-link nav-">
-                       <i class="far fa-edit"></i>
-                       <p>
-                           Calculadora
-                           <i class="fas fa-angle-left right"></i>
-                       </p>
-                   </a>
-
-                   <ul class="nav nav-treeview">
-                       <li class="nav-item">
-                           <a href="{{ route('calculadora.index') }}" target="frameprincipal" class="nav-link">
-                               <i class="far fa-circle nav-icon"></i>
-                               <p>Calculadora</p>
-                           </a>
-                       </li>
-                   </ul>
-                </li>
 
 
             </ul>
