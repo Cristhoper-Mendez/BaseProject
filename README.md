@@ -31,7 +31,7 @@ Proyecto final web en **Laravel**.
 
    ```bash
    git clone https://github.com/Cristhoper-Mendez/BaseProject.git
-   cd tu-proyecto
+   cd BaseProject
 
 2. Instalar dependencias
 
