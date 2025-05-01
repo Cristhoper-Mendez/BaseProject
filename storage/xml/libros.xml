@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libros>
+    <libro><id>1</id><titulo>Sombras del Futuro</titulo><autor>Laura Mendoza</autor><anio>2010</anio></libro>
+    <libro><id>2</id><titulo>El Valle de Cristal</titulo><autor>José Ramírez</autor><anio>2011</anio></libro>
+    <libro><id>3</id><titulo>Los Ecos del Silencio</titulo><autor>Camila Torres</autor><anio>2012</anio></libro>
+    <libro><id>4</id><titulo>Mares de Acero</titulo><autor>Ricardo Fernández</autor><anio>2013</anio></libro>
+    <libro><id>5</id><titulo>El Código Azul</titulo><autor>Andrea Ruiz</autor><anio>2014</anio></libro>
+    <libro><id>6</id><titulo>Luces de Medianoche</titulo><autor>Iván Soto</autor><anio>2015</anio></libro>
+    <libro><id>7</id><titulo>La Última Llama</titulo><autor>Verónica Paredes</autor><anio>2016</anio></libro>
+    <libro><id>8</id><titulo>Los Hijos del Sol</titulo><autor>Héctor Álvarez</autor><anio>2017</anio></libro>
+    <libro><id>9</id><titulo>Ríos de Sangre</titulo><autor>María Galindo</autor><anio>2018</anio></libro>
+    <libro><id>10</id><titulo>Universo Fragmentado</titulo><autor>Samuel Lobo</autor><anio>2019</anio></libro>
+    <libro><id>11</id><titulo>La Torre de Arena</titulo><autor>Daniela Ocampo</autor><anio>2020</anio></libro>
+    <libro><id>12</id><titulo>Fronteras de Hielo</titulo><autor>Luis Carranza</autor><anio>2021</anio></libro>
+    <libro><id>13</id><titulo>Secretos del Viento</titulo><autor>Rocío Morales</autor><anio>2022</anio></libro>
+    <libro><id>14</id><titulo>El Camino del Cuervo</titulo><autor>Mario Zambrano</autor><anio>2023</anio></libro>
+    <libro><id>15</id><titulo>Legado Prohibido</titulo><autor>Ana Jiménez</autor><anio>2024</anio></libro>
+    <libro><id>16</id><titulo>Ruinas del Tiempo</titulo><autor>Carlos Ibarra</autor><anio>2010</anio></libro>
+    <libro><id>17</id><titulo>Colinas Rojas</titulo><autor>Julia Salinas</autor><anio>2011</anio></libro>
+    <libro><id>18</id><titulo>Reflejos de Ayer</titulo><autor>Pedro Núñez</autor><anio>2012</anio></libro>
+    <libro><id>19</id><titulo>La Novena Llave</titulo><autor>Paula Reyes</autor><anio>2013</anio></libro>
+    <libro><id>20</id><titulo>Pasos de Sombras</titulo><autor>Alonso Lara</autor><anio>2014</anio></libro>
+    <libro><id>21</id><titulo>Horizonte Perdido</titulo><autor>Silvia Castaño</autor><anio>2015</anio></libro>
+    <libro><id>22</id><titulo>El Espejo Infinito</titulo><autor>Gabriel Chacón</autor><anio>2016</anio></libro>
+    <libro><id>23</id><titulo>Círculo de Cenizas</titulo><autor>Mónica Vega</autor><anio>2017</anio></libro>
+    <libro><id>24</id><titulo>Árbol de Fuego</titulo><autor>Tomás Herrera</autor><anio>2018</anio></libro>
+    <libro><id>25</id><titulo>Laberinto de Luz</titulo><autor>Karina Duarte</autor><anio>2019</anio></libro>
+    <libro><id>26</id><titulo>El Eco de las Rocas</titulo><autor>Fernando Quintero</autor><anio>2020</anio></libro>
+    <libro><id>27</id><titulo>Sombras de Humo</titulo><autor>Valeria León</autor><anio>2021</anio></libro>
+    <libro><id>28</id><titulo>El Secreto del Abismo</titulo><autor>Juan Pablo Ríos</autor><anio>2022</anio></libro>
+    <libro><id>29</id><titulo>Voces de Cristal</titulo><autor>Patricia Gómez</autor><anio>2023</anio></libro>
+    <libro><id>30</id><titulo>Espinas del Norte</titulo><autor>Esteban Molina</autor><anio>2024</anio></libro>
+    <libro><id>31</id><titulo>El Guerrero de Bronce</titulo><autor>Lucía Ortega</autor><anio>2010</anio></libro>
+    <libro><id>32</id><titulo>La Isla Escondida</titulo><autor>Raúl Peña</autor><anio>2011</anio></libro>
+    <libro><id>33</id><titulo>Travesía de Sombras</titulo><autor>Jimena Solís</autor><anio>2012</anio></libro>
+    <libro><id>34</id><titulo>El Lienzo de los Dioses</titulo><autor>Óscar Campos</autor><anio>2013</anio></libro>
+    <libro><id>35</id><titulo>Niebla Interna</titulo><autor>Gloria Valdez</autor><anio>2014</anio></libro>
+    <libro><id>36</id><titulo>Destino de Acero</titulo><autor>Eduardo Palacios</autor><anio>2015</anio></libro>
+    <libro><id>37</id><titulo>Tierras de Nadie</titulo><autor>Natalia Ríos</autor><anio>2016</anio></libro>
+    <libro><id>38</id><titulo>El Muro Eterno</titulo><autor>Santiago Córdova</autor><anio>2017</anio></libro>
+    <libro><id>39</id><titulo>Almas que Brillan</titulo><autor>Beatriz Acosta</autor><anio>2018</anio></libro>
+    <libro><id>40</id><titulo>La Rosa Eléctrica</titulo><autor>Fabián Castillo</autor><anio>2019</anio></libro>
+    <libro><id>41</id><titulo>Puente de Lluvias</titulo><autor>Miranda Herrera</autor><anio>2020</anio></libro>
+    <libro><id>42</id><titulo>La Canción de los Pinos</titulo><autor>Ignacio Serrano</autor><anio>2021</anio></libro>
+    <libro><id>43</id><titulo>Los Días del Cuervo</titulo><autor>Lorena Bravo</autor><anio>2022</anio></libro>
+    <libro><id>44</id><titulo>Mar Abierto</titulo><autor>Ramiro Ponce</autor><anio>2023</anio></libro>
+    <libro><id>45</id><titulo>El Jardín Vacío</titulo><autor>Marcela Franco</autor><anio>2024</anio></libro>
+    <libro><id>46</id><titulo>El Último Navegante</titulo><autor>Iván Guzmán</autor><anio>2020</anio></libro>
+    <libro><id>47</id><titulo>Espejos de Arena</titulo><autor>Andrea Morales</autor><anio>2021</anio></libro>
+    <libro><id>48</id><titulo>Cadenas del Alma</titulo><autor>Renato Vargas</autor><anio>2022</anio></libro>
+    <libro><id>49</id><titulo>El Rastro de la Niebla</titulo><autor>Violeta Pizarro</autor><anio>2023</anio></libro>
+    <libro><id>50</id><titulo>Las Horas Rojas</titulo><autor>Emilio Duarte</autor><anio>2024</anio></libro>
+</libros>
