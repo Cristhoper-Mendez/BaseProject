@@ -15,7 +15,7 @@
                  <li class="nav-item">
 
                      <a href="#" class="nav-link nav-">
-                        <i class="far fa-edit"></i>
+                     <i class="fas fa-folder"></i>
                         <p>
                             Roles y Permisos
                             <i class="fas fa-angle-left right"></i>
@@ -23,16 +23,16 @@
                     </a>
 
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item" >
                             <a href="{{ route('admin.roles.index') }}" target="frameprincipal" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <i class="fas fa-check-circle mr-2"></i>
                                 <p>Rol y Permisos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('admin.permisos.index') }}" target="frameprincipal" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <i class="fas fa-user-circle mr-2"></i>
                                 <p>Usuario</p>
                             </a>
                         </li>
@@ -44,7 +44,7 @@
                 <li class="nav-item">
 
                     <a href="#" class="nav-link nav-">
-                       <i class="far fa-edit"></i>
+                    <i class="fas fa-folder"></i>
                        <p>
                            Calculadora
                            <i class="fas fa-angle-left right"></i>
@@ -54,7 +54,7 @@
                    <ul class="nav nav-treeview">
                        <li class="nav-item">
                            <a href="{{ route('calculadora.index') }}" target="frameprincipal" class="nav-link">
-                               <i class="far fa-circle nav-icon"></i>
+                           <i class="fas fa-calculator mr-2"></i>
                                <p>Calculadora</p>
                            </a>
                        </li>
