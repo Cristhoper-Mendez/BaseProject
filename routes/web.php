@@ -63,3 +63,4 @@ Route::get('/libros', [LibroController::class, 'mostrarLibros'])->name('redirect
 
 // --- Calculadora ROUTES 
 Route::get('/calculadora', [CalculadoraController::class, 'index'])->name('calculadora.index');
+Route::post('/calculadora', [CalculadoraController::class, 'store'])->name('calculadora.store');
