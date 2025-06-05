@@ -6,6 +6,7 @@ use App\Http\Controllers\Controles\ControlController;
 use App\Http\Controllers\Backend\Roles\RolesController;
 use App\Http\Controllers\Backend\Roles\PermisoController;
 use App\Http\Controllers\Backend\Perfil\PerfilController;
+use App\Http\Controllers\Backend\Proveedor\ProveedorController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
 
@@ -58,3 +59,6 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
 
+// --- PROVEEDOR ---
+Route::get('/admin/proveedores/index', [ProveedorController::class, 'index'])->name('admin.proveedores.index');
+Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tablaproveedores'])->name('admin.proveedores.tablaproveedores');
