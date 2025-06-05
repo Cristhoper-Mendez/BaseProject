@@ -33,6 +33,7 @@ class ProveedorFactory extends Factory
                 'Minorista',
                 'Importador'
             ]),
+            'activo' => true
         ];
     }
 }

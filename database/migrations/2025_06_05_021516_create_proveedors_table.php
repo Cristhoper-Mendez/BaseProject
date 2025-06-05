@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('contacto');
             $table->text('productos');
             $table->string('clasificacion');
+            $table->boolean('activo');
         });
     }
 
