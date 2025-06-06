@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\Perfil\PerfilController;
 use App\Http\Controllers\Backend\Proveedor\ProveedorController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
-
+use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
@@ -62,3 +62,7 @@ Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->n
 // --- PROVEEDOR ---
 Route::get('/admin/proveedores/index', [ProveedorController::class, 'index'])->name('admin.proveedores.index');
 Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tablaproveedores'])->name('admin.proveedores.tablaproveedores');
+Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+Route::get('/admin/proveedores/create', function () {
+    return view('backend.proveedor.create');
+})->name('admin.proveedores.create');
