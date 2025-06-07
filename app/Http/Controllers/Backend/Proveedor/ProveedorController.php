@@ -13,8 +13,25 @@ class ProveedorController extends Controller
         return view('backend.proveedor.index');
     }
 
-    public function tablaProveedores(){
-         $proveedores = Proveedor::all();
+    public function tablaProveedores()
+    {
+        $proveedores = Proveedor::all();
         return view('backend.proveedor.tablaproveedores', compact('proveedores'));
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|unique:proveedors,email',
+        ]);
+
+        Proveedor::create([
+            'nombre' => $request->nombre,
+            'email' => $request->email,
+        ]);
+
+        return response()->json(['message' => 'Proveedor creado']);
+    }
 }
+

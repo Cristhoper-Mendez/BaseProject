@@ -11,4 +11,7 @@ class Proveedor extends Model
 
     protected $table = 'Proveedor';
     public $timestamps = false;
+
+    protected $fillable = ['nombre', 'email'];
 }
+

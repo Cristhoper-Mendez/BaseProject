@@ -9,25 +9,17 @@ use App\Http\Controllers\Backend\Perfil\PerfilController;
 use App\Http\Controllers\Backend\Proveedor\ProveedorController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
-
-
-
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
-
 // --- LOGIN ---
-
 Route::get('/', [LoginController::class,'index'])->name('login');
-
 Route::post('/admin/login', [LoginController::class, 'login']);
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 // --- CONTROL WEB ---
-
 Route::get('/panel', [ControlController::class,'indexRedireccionamiento'])->name('admin.panel');
 
 // --- ROLES ---
-
 Route::get('/admin/roles/index', [RolesController::class,'index'])->name('admin.roles.index');
 Route::get('/admin/roles/tabla', [RolesController::class,'tablaRoles']);
 Route::get('/admin/roles/lista/permisos/{id}', [RolesController::class,'vistaPermisos']);
@@ -39,7 +31,6 @@ Route::get('/admin/roles/permisos-todos/tabla', [RolesController::class,'tablaTo
 Route::post('/admin/roles/borrar-global', [RolesController::class, 'borrarRolGlobal']);
 
 // --- PERMISOS A USUARIOS ---
-
 Route::get('/admin/permisos/index', [PermisoController::class,'index'])->name('admin.permisos.index');
 Route::get('/admin/permisos/tabla', [PermisoController::class,'tablaUsuarios']);
 Route::post('/admin/permisos/nuevo-usuario', [PermisoController::class, 'nuevoUsuario']);
@@ -56,9 +47,19 @@ Route::post('/admin/editar-perfil/actualizar', [PerfilController::class, 'editar
 // --- SIN PERMISOS VISTA 403 ---
 Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('no.permisos.index');
 
+// --- DASHBOARD ---
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
-
 
 // --- PROVEEDOR ---
 Route::get('/admin/proveedores/index', [ProveedorController::class, 'index'])->name('admin.proveedores.index');
 Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tablaproveedores'])->name('admin.proveedores.tablaproveedores');
+Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+Route::get('/admin/proveedores/create', function () {
+    return view('backend.proveedor.create');
+})->name('admin.proveedores.create');
+
+// Eliminar proveedor
+Route::post('/admin/proveedores/eliminar', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
+
+//Vista de detalle proveedor
+Route::get('/admin/proveedores/{id}', [ProveedorController::class, 'show'])->name('admin.proveedores.show');
