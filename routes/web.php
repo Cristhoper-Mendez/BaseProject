@@ -60,3 +60,6 @@ Route::get('/admin/proveedores/create', function () {
 
 // Eliminar proveedor
 Route::post('/admin/proveedores/eliminar', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
+
+//Vista de detalle proveedor
+Route::get('/admin/proveedores/{id}', [ProveedorController::class, 'show'])->name('admin.proveedores.show');
