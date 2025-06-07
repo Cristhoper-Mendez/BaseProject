@@ -33,5 +33,24 @@ class ProveedorController extends Controller
 
         return response()->json(['message' => 'Proveedor creado']);
     }
+    public function destroy(Request $request)
+{
+    $proveedor = Proveedor::find($request->id);
+
+    if (!$proveedor) {
+        return response()->json(['success' => false, 'mensaje' => 'El proveedor no fue encontrado.']);
+    }
+
+    $proveedor->delete();
+
+    return response()->json(['success' => true, 'mensaje' => 'El proveedor fue eliminado con éxito.']);
+}
+public function show($id)
+{
+    $proveedor = Proveedor::findOrFail($id);
+    return view('backend.proveedor.show', compact('proveedor'));
+}
+
+
 }
 
