@@ -1,6 +1,14 @@
-@extends('backend.template.app')
+@extends('backend.menus.superior')
 
-@section('main-content')
+@section('content-admin-css')
+    <link href="{{ asset('css/adminlte.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/dataTables.bootstrap4.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/toastr.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/select2.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/select2-bootstrap-5-theme.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/buttons_estilo.css') }}" rel="stylesheet">
+@stop
+
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
@@ -22,4 +30,7 @@
         </div>
     </div>
 </div>
-@endsection
+
+@extends('backend.menus.footerjs')
+@section('archivos-js')
+@stop
