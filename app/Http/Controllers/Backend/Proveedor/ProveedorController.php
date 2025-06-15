@@ -22,40 +22,40 @@ class ProveedorController extends Controller
     }
 
     // Guardar nuevo proveedor
-   public function store(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'nombre' => 'required|string|max:100',
-        'empresa' => 'required|string|max:100',
-        'contacto' => 'required|email|max:255',
-        'rol' => 'required|in:Mayorista,Minotario',
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Validación fallida',
-            'errors' => $validator->errors()
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:100',
+            'empresa' => 'required|string|max:100',
+            'contacto' => 'required|email|max:255',
+            'rol' => 'required|in:Mayorista,Minotario',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validación fallida',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        try {
+            Proveedor::create([
+                'nombre' => $request->nombre,
+                'empresa' => $request->empresa,
+                'contacto' => $request->contacto,
+                'rol' => $request->rol,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al guardar proveedor',
+                'error' => $e->getMessage()
+            ]);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Proveedor creado exitosamente.']);
     }
-
-    try {
-        Proveedor::create([
-            'nombre' => $request->nombre,
-            'empresa' => $request->empresa,
-            'contacto' => $request->contacto,
-            'rol' => $request->rol,
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Error al guardar proveedor',
-            'error' => $e->getMessage()
-        ]);
-    }
-
-    return response()->json(['success' => true, 'message' => 'Proveedor creado exitosamente.']);
-}
 
 
     // Eliminar proveedor

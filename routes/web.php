@@ -54,7 +54,7 @@ Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->n
 Route::get('/admin/proveedores/index', [ProveedorController::class, 'index'])->name('admin.proveedores.index');
 
 // Vista parcial de tabla de proveedores (para AJAX)
-Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tabla'])->name('admin.proveedores.tabla');
+Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tablaProveedores'])->name('admin.proveedores.tabla');
 
 // Crear nuevo proveedor
 Route::get('/admin/proveedores/create', function () {
