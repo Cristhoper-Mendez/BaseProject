@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Proveedor\ProveedorController;
 use App\Http\Controllers\Backend\Configuracion\ConfiguracionController;
 use App\Http\Controllers\Backend\Registro\RegistroController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\ApiClima\ClimaController; 
 
 // --- LOGIN ---
 Route::get('/', [LoginController::class,'index'])->name('login');
@@ -69,3 +70,6 @@ Route::post('/admin/proveedores/eliminar', [ProveedorController::class, 'destroy
 
 // Ver detalle proveedor
 Route::get('/admin/proveedores/{id}', [ProveedorController::class, 'show'])->name('admin.proveedores.show');
+
+// --- Api Clima ---
+Route::get('/admin/apiClima', [ClimaController::class, 'index'])->name('admin.apiClima.index');

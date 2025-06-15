@@ -47,6 +47,28 @@
 
                     </ul>
                  </li>
+                 <!-- Api -->
+                 <li class="nav-item">
+                    <a href="#" class="nav-link nav-">
+                        <i class="bi bi-card-checklist mr-1" style="font-size: 1.3rem;"></i>
+                        <p>
+                            Uso de API
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.apiClima.index') }}" target="frameprincipal" class="nav-link">
+                                <i class="av-icon fas fa-cloud-sun"></i>
+                                <p>Clima</p>
+                            </a>
+                        </li>
+                    </ul>
+                 </li>
+
+                 
+
+
                 @endcan
 
 
