@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <label>Empresa</label>
                                     <input type="text" maxlength="50" autocomplete="off" class="form-control"
-                                        id="empresa-nuevo" placeholder="Usuario">
+                                        id="empresa-nuevo" placeholder="Empresa">
                                 </div>
 
                                 <div class="form-group">
@@ -81,7 +81,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label style="color:#191818">Rol</label>
+                                    <label style="color:#191818">Clasificacion</label>
                                     <br>
                                     <div>
                                         <select class="form-control" id="rol-nuevo">
@@ -101,7 +101,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" style="font-weight: bold; background-color: #28a745; color: white !important;"
                     class="button button-3d button-rounded button-pill button-small"
-                    onclick="nuevoUsuario()">Guardar</button>
+                    onclick="nuevoProveedor()">Guardar</button>
             </div>
         </div>
     </div>
