@@ -9,9 +9,11 @@ class Proveedor extends Model
 {
     use HasFactory;
 
-    protected $table = 'Proveedor';
+   
+    protected $table = 'Proveedor'; 
+
     public $timestamps = false;
 
-    protected $fillable = ['nombre', 'email'];
+    // Campos que se pueden llenar con create()
+    protected $fillable = ['nombre', 'empresa', 'contacto', 'rol'];
 }
-

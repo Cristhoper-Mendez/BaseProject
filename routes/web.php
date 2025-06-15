@@ -50,16 +50,22 @@ Route::get('sin-permisos', [ControlController::class,'indexSinPermiso'])->name('
 // --- DASHBOARD ---
 Route::get('/admin/dashboard', [DashboardController::class,'vistaDashboard'])->name('admin.dashboard.index');
 
-// --- PROVEEDOR ---
+// --- PROVEEDORES ---
 Route::get('/admin/proveedores/index', [ProveedorController::class, 'index'])->name('admin.proveedores.index');
-Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tablaproveedores'])->name('admin.proveedores.tablaproveedores');
-Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+
+// Vista parcial de tabla de proveedores (para AJAX)
+Route::get('/admin/proveedores/tabla', [ProveedorController::class, 'tabla'])->name('admin.proveedores.tabla');
+
+// Crear nuevo proveedor
 Route::get('/admin/proveedores/create', function () {
     return view('backend.proveedor.create');
 })->name('admin.proveedores.create');
 
+// Guardar proveedor
+Route::post('/admin/proveedores/store', [ProveedorController::class, 'store'])->name('proveedores.store');
+
 // Eliminar proveedor
 Route::post('/admin/proveedores/eliminar', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
 
-//Vista de detalle proveedor
+// Ver detalle proveedor
 Route::get('/admin/proveedores/{id}', [ProveedorController::class, 'show'])->name('admin.proveedores.show');

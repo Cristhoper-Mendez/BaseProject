@@ -50,6 +50,29 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        {{-- Aquí empieza la nueva tabla integrada --}}
+                        <table class="table table-bordered table-striped mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Empresa</th>
+                                    <th>Contacto</th>
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($proveedores as $proveedor)
+                                    <tr>
+                                        <td>{{ $proveedor->nombre }}</td>
+                                        <td>{{ $proveedor->empresa }}</td>
+                                        <td>{{ $proveedor->contacto }}</td>
+                                        <td>{{ $proveedor->rol }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{-- Fin nueva tabla --}}
                     </div>
                 </div>
             </div>
@@ -118,4 +141,3 @@
         }
     }
 </script>
-

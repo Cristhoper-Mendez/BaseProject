@@ -76,8 +76,8 @@
 
                                 <div class="form-group">
                                     <label>Contacto</label>
-                                    <input type="text" maxlength="16" autocomplete="off" class="form-control"
-                                        id="contacto-nuevo" placeholder="Contraseña">
+                                    <input type="text" maxlength="255" autocomplete="off" class="form-control"
+                                        id="contacto-nuevo" placeholder="Correo Electronico">
                                 </div>
 
                                 <div class="form-group">
@@ -118,6 +118,45 @@
     <script src="{{ asset('js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/alertaPersonalizada.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/select2.min.js') }}" type="text/javascript"></script>
+
+    <script>
+  function borrar(idproveedor) {
+            Swal.fire({
+                title: '¿Estás seguro que deseas eliminar este proveedor?',
+                text: "Esta accion sera irreversible.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    openLoading()
+
+                    var formData = new FormData();
+                    formData.append('idproveedor', idproveedor);
+
+                    axios.post(url + '/admin/proveedores/eliminar', formData, {})
+                        .then((response) => {
+                            closeLoading()
+                            $('#modalBorrar').modal('hide');
+
+                            if (response.data.success === 1) {
+                                toastr.success('Proveedor eliminado');
+                                recargar();
+                            } else {
+                                toastr.error('Error al eliminar');
+                            }
+                        })
+                        .catch((error) => {
+                            closeLoading();
+                            toastr.error('Error al eliminar');
+                        });
+                }
+            });
+        }
+</script>
+
 
     <!-- incluir tabla -->
     <script type="text/javascript">
