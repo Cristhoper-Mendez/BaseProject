@@ -87,7 +87,7 @@
                                         <select class="form-control" id="rol-nuevo">
                                             <option value="null" selected disabled>Seleccione una opcion</option>
                                             <option value="Mayorista">Mayorista</option>
-                                            <option value="Mayorista">Minotario</option>
+                                            <option value="Minorista">Minorista</option>
                                         </select>
                                     </div>
                                 </div>

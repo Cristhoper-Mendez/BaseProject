@@ -65,6 +65,12 @@ Route::get('/admin/proveedores/create', function () {
 // Guardar proveedor
 Route::post('/admin/proveedores/store', [ProveedorController::class, 'store'])->name('proveedores.store');
 
+// Ruta para obtener datos del proveedor a editar
+Route::get('/proveedores/{id}/edit', [ProveedorController::class, 'edit'])->name('proveedores.edit');
+
+// Ruta para actualizar el proveedor (usamos POST por simplicidad con AJAX, pero PUT/PATCH es semánticamente correcto)
+Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('proveedores.update');
+
 // Eliminar proveedor
 Route::post('/admin/proveedores/eliminar', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
 

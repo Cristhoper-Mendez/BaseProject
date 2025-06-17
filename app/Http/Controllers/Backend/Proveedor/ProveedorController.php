@@ -28,7 +28,7 @@ class ProveedorController extends Controller
             'nombre' => 'required|string|max:100',
             'empresa' => 'required|string|max:100',
             'contacto' => 'required|email|max:255',
-            'rol' => 'required|in:Mayorista,Minotario',
+            'clasificacion' => 'required|in:Mayorista,Minorista',
         ]);
 
         if ($validator->fails()) {
@@ -44,7 +44,7 @@ class ProveedorController extends Controller
                 'nombre' => $request->nombre,
                 'empresa' => $request->empresa,
                 'contacto' => $request->contacto,
-                'rol' => $request->rol,
+                'clasificacion' => $request->clasificacion,
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -55,6 +55,86 @@ class ProveedorController extends Controller
         }
 
         return response()->json(['success' => true, 'message' => 'Proveedor creado exitosamente.']);
+    }
+
+    //==============================================================
+    //== INICIO: CÓDIGO PARA LA EDICIÓN
+    //==============================================================
+
+    /**
+     * Obtiene los datos de un proveedor específico para la edición.
+     * Devuelve los datos en formato JSON para ser usados en un formulario de edición.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($id)
+    {
+        $proveedor = Proveedor::find($id);
+
+        if (!$proveedor) {
+            return response()->json(['success' => false, 'message' => 'Proveedor no encontrado.']);
+        }
+
+        // Devuelve los datos del proveedor en formato JSON
+        return response()->json(['success' => true, 'proveedor' => $proveedor]);
+    }
+
+    /**
+     * Actualiza un proveedor existente en la base de datos.
+     * Recibe los datos vía AJAX.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, $id)
+    {
+        // La validación es similar a la del método store
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:100',
+            'empresa' => 'required|string|max:100',
+            'contacto' => 'required|email|max:255',
+            'clasificacion' => 'required|in:Mayorista,Minorista',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validación fallida',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $proveedor = Proveedor::find($id);
+        if (!$proveedor) {
+            return response()->json(['success' => false, 'message' => 'Proveedor no encontrado.']);
+        }
+
+        try {
+            $proveedor->update([
+                'nombre' => $request->nombre,
+                'empresa' => $request->empresa,
+                'contacto' => $request->contacto,
+                'clasificacion' => $request->clasificacion,
+            ]);
+
+            $proveedor->refresh();
+
+            return response()->json([
+            'success' => true,
+            'message' => 'Proveedor actualizado exitosamente.',
+            'proveedor' => $proveedor // 🔥 Este es clave para que JS lo use
+        ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al actualizar el proveedor',
+                'error' => $e->getMessage()
+            ]);
+        }
+
     }
 
 

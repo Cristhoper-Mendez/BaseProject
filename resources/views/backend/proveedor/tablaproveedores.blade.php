@@ -11,7 +11,7 @@
                                     <th style="width: 10%">Nombre</th>
                                     <th style="width: 10%">Empresa</th>
                                     <th style="width: 10%">Contacto</th>
-                                    <th style="width: 8%">Clasificación</th>
+                                    <th style="width: 8%">Clasificacion</th>
                                     <th style="width: 8%">Activo</th>
                                     <th style="width: 20%">Opciones</th>
                                 </tr>
@@ -58,7 +58,7 @@
                                     <th>Nombre</th>
                                     <th>Empresa</th>
                                     <th>Contacto</th>
-                                    <th>Rol</th>
+                                    <th>Clasificacion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,7 +67,7 @@
                                         <td>{{ $proveedor->nombre }}</td>
                                         <td>{{ $proveedor->empresa }}</td>
                                         <td>{{ $proveedor->contacto }}</td>
-                                        <td>{{ $proveedor->rol }}</td>
+                                        <td>{{ $proveedor->clasificacion }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -78,6 +78,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal para editar proveedor -->
+<div class="modal fade" id="modalEditarProveedor" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form id="formEditarProveedor">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Proveedor</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editar-id">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="editar-nombre" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" id="editar-empresa" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Correo</label>
+            <input type="email" id="editar-contacto" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Clasificacion</label>
+            <select name="clasificacion" id="editar-clasificacion" class="form-control" required>
+              <option value="Mayorista">Mayorista</option>
+              <option value="Minorista">Minorista</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar cambios</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 </section>
 
 {{-- DataTables --}}
@@ -140,4 +181,56 @@
             });
         }
     }
+
+    // Obtener información y abrir modal
+function verInformacion(id) {
+    $.get("/proveedores/" + id + "/edit", function(data) {
+        if (data.success) {
+            $('#editar-id').val(data.proveedor.id);
+            $('#editar-nombre').val(data.proveedor.nombre);
+            $('#editar-empresa').val(data.proveedor.empresa);
+            $('#editar-contacto').val(data.proveedor.contacto);
+            $('#editar-clasificacion').val(data.proveedor.clasificacion);
+            $('#modalEditarProveedor').modal('show');
+        } else {
+            alert('Proveedor no encontrado.');
+        }
+    });
+}
+
+// Guardar cambios del proveedor
+$('#formEditarProveedor').submit(function(e) {
+    e.preventDefault();
+
+    let id = $('#editar-id').val();
+    let data = {
+        nombre: $('#editar-nombre').val(),
+        empresa: $('#editar-empresa').val(),
+        contacto: $('#editar-contacto').val(),
+        clasificacion: $('#editar-clasificacion').val(),
+        _token: '{{ csrf_token() }}',
+        _method: 'PUT' // Importante: decirle a Laravel que es un PUT
+    };
+
+    $.ajax({
+        url: "/proveedores/" + id,
+        method: "POST", // AJAX manda POST, pero _method lo convierte en PUT
+        data: data,
+        success: function(response) {
+            if (response.success) {
+                $('#modalEditarProveedor').modal('hide');
+                alert('Proveedor actualizado correctamente.');
+                
+                let fila = $('#fila-' + id);
+        fila.find('td').eq(1).text(response.proveedor.nombre);
+        fila.find('td').eq(2).text(response.proveedor.empresa);
+        fila.find('td').eq(3).text(response.proveedor.contacto);
+        fila.find('td').eq(4).text(response.proveedor.clasificacion); // ✅ ¡aquí se actualiza correctamente!
+
+    } else {
+        alert('Error: ' + response.message);
+    }
+}
+    });
+});
 </script>
