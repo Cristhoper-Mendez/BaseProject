@@ -92,6 +92,21 @@
                                     </div>
                                 </div>
 
+                               <div class="form-group">
+                                    <label>Productos</label>
+                                            <input type="text" maxlength="255" autocomplete="off" class="form-control"
+                                           id="productos-nuevo" placeholder="Ej: Frutas, Lácteos, Abarrotes">
+                               </div>
+
+                               <div class="form-group">
+                                     <label>¿Activo?</label>
+                                      <select class="form-control" id="activo-nuevo">
+                                     <option value="1" selected>Sí</option>
+                                    <option value="0">No</option>
+                                      </select>
+                            </div>
+ 
+
                             </div>
                         </div>
                     </div>
@@ -173,4 +188,48 @@
             $('#modalAgregar').modal('show');
         }
     </script>
+
+<script>
+    function nuevoProveedor() {
+    let nombre = document.getElementById('nombre-nuevo').value.trim();
+    let empresa = document.getElementById('empresa-nuevo').value.trim();
+    let contacto = document.getElementById('contacto-nuevo').value.trim();
+    let clasificacion = document.getElementById('rol-nuevo').value;
+    let productos = document.getElementById('productos-nuevo').value.trim();
+    let activo = document.getElementById('activo-nuevo').value;
+
+
+    if (!nombre || !empresa || !contacto || !clasificacion || !productos) {
+        toastr.error('Debe completar todos los campos');
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('empresa', empresa);
+    formData.append('contacto', contacto);
+    formData.append('clasificacion', clasificacion);
+    formData.append('productos', productos); 
+    formData.append('activo', activo);
+
+
+    axios.post("{{ url('admin/proveedores/store') }}", formData)
+        .then(response => {
+            if (response.data.success) {
+                toastr.success('Proveedor guardado exitosamente');
+                $('#modalAgregar').modal('hide');
+                $('#tablaDatatable').load("{{ URL::to('admin/proveedores/tabla') }}");
+            } else {
+                toastr.error(response.data.message || 'Error al guardar');
+            }
+        })
+        .catch(error => {
+            toastr.error('Error al guardar proveedor');
+        });
+}
+
+</script>
+
+
+
 @stop

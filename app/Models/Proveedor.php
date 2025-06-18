@@ -15,5 +15,5 @@ class Proveedor extends Model
     public $timestamps = false;
 
     // Campos que se pueden llenar con create()
-    protected $fillable = ['nombre', 'empresa', 'contacto', 'clasificacion'];
+    protected $fillable = ['nombre', 'empresa', 'contacto', 'clasificacion', 'productos', 'activo'];
 }

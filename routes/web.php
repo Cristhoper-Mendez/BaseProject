@@ -63,7 +63,8 @@ Route::get('/admin/proveedores/create', function () {
 })->name('admin.proveedores.create');
 
 // Guardar proveedor
-Route::post('/admin/proveedores/store', [ProveedorController::class, 'store'])->name('proveedores.store');
+Route::post('admin/proveedores/store', [ProveedorController::class, 'store']);
+
 
 // Ruta para obtener datos del proveedor a editar
 Route::get('/proveedores/{id}/edit', [ProveedorController::class, 'edit'])->name('proveedores.edit');
