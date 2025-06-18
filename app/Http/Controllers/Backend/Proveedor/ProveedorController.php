@@ -101,6 +101,8 @@ class ProveedorController extends Controller
             'empresa' => 'required|string|max:100',
             'contacto' => 'required|email|max:255',
             'clasificacion' => 'required|in:Mayorista,Minorista',
+            'productos' => 'required|string|max:255',
+        'activo' => 'required|in:0,1',
         ]);
 
         if ($validator->fails()) {
@@ -122,6 +124,8 @@ class ProveedorController extends Controller
                 'empresa' => $request->empresa,
                 'contacto' => $request->contacto,
                 'clasificacion' => $request->clasificacion,
+                'productos' => $request->productos,
+            'activo' => $request->activo,
             ]);
 
             $proveedor->refresh();

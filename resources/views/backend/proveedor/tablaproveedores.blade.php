@@ -12,6 +12,7 @@
                                     <th style="width: 10%">Empresa</th>
                                     <th style="width: 10%">Contacto</th>
                                     <th style="width: 8%">Clasificacion</th>
+                                    <th style="width: 8%">Productos</th>
                                     <th style="width: 8%">Activo</th>
                                     <th style="width: 20%">Opciones</th>
                                 </tr>
@@ -24,6 +25,8 @@
                                         <td>{{ $dato->empresa }}</td>
                                         <td>{{ $dato->contacto }}</td>
                                         <td>{{ $dato->clasificacion }}</td>
+                                        <td>{{ $dato->productos }}</td>
+
 
                                         <td>
                                             @if($dato->activo == 0)
@@ -59,6 +62,8 @@
                                     <th>Empresa</th>
                                     <th>Contacto</th>
                                     <th>Clasificacion</th>
+                                    <th>Productos</th>
+                                    <th>Activo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,6 +73,14 @@
                                         <td>{{ $proveedor->empresa }}</td>
                                         <td>{{ $proveedor->contacto }}</td>
                                         <td>{{ $proveedor->clasificacion }}</td>
+                                        <td>{{ $proveedor->productos }}</td>
+                                        <td>
+                                            @if($dato->activo == 0)
+                                                <span class="badge bg-danger">Inactivo</span>
+                                            @else
+                                                <span class="badge bg-success">Activo</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -110,6 +123,18 @@
               <option value="Minorista">Minorista</option>
             </select>
           </div>
+          <div class="form-group">
+  <label>Productos</label>
+  <input type="text" id="editar-productos" class="form-control" required>
+</div>
+
+<div class="form-group">
+  <label>Estado</label>
+  <select id="editar-activo" class="form-control" required>
+    <option value="1">Activo</option>
+    <option value="0">Inactivo</option>
+  </select>
+</div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Guardar cambios</button>
@@ -191,6 +216,8 @@ function verInformacion(id) {
             $('#editar-empresa').val(data.proveedor.empresa);
             $('#editar-contacto').val(data.proveedor.contacto);
             $('#editar-clasificacion').val(data.proveedor.clasificacion);
+            $('#editar-productos').val(data.proveedor.productos);
+$('#editar-activo').val(data.proveedor.activo);
             $('#modalEditarProveedor').modal('show');
         } else {
             alert('Proveedor no encontrado.');
@@ -208,6 +235,8 @@ $('#formEditarProveedor').submit(function(e) {
         empresa: $('#editar-empresa').val(),
         contacto: $('#editar-contacto').val(),
         clasificacion: $('#editar-clasificacion').val(),
+        productos: $('#editar-productos').val(),
+    activo: $('#editar-activo').val(),
         _token: '{{ csrf_token() }}',
         _method: 'PUT' // Importante: decirle a Laravel que es un PUT
     };
@@ -225,8 +254,12 @@ $('#formEditarProveedor').submit(function(e) {
         fila.find('td').eq(1).text(response.proveedor.nombre);
         fila.find('td').eq(2).text(response.proveedor.empresa);
         fila.find('td').eq(3).text(response.proveedor.contacto);
-        fila.find('td').eq(4).text(response.proveedor.clasificacion); // ✅ ¡aquí se actualiza correctamente!
-
+        fila.find('td').eq(4).text(response.proveedor.clasificacion); 
+        fila.find('td').eq(5).text(response.proveedor.productos);// ✅ ¡aquí se actualiza correctamente!
+        let estadoHTML = (response.proveedor.activo == 1)
+    ? '<span class="badge bg-success">Activo</span>'
+    : '<span class="badge bg-danger">Inactivo</span>';
+fila.find('td').eq(6).html(estadoHTML);
     } else {
         alert('Error: ' + response.message);
     }
