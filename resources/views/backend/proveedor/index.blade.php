@@ -135,7 +135,7 @@
     <script src="{{ asset('js/select2.min.js') }}" type="text/javascript"></script>
 
     <script>
-  function borrar(idproveedor) {
+        function borrar(idproveedor) {
             Swal.fire({
                 title: '¿Estás seguro que deseas eliminar este proveedor?',
                 text: "Esta accion sera irreversible.",
@@ -170,8 +170,7 @@
                 }
             });
         }
-</script>
-
+    </script>
 
     <!-- incluir tabla -->
     <script type="text/javascript">
@@ -183,53 +182,91 @@
     </script>
 
     <script>
+     
+        function guardarDatosTemporales() {
+            const datos = {
+                nombre: document.getElementById('nombre-nuevo').value,
+                empresa: document.getElementById('empresa-nuevo').value,
+                contacto: document.getElementById('contacto-nuevo').value,
+                clasificacion: document.getElementById('rol-nuevo').value,
+                productos: document.getElementById('productos-nuevo').value,
+                activo: document.getElementById('activo-nuevo').value
+            };
+            localStorage.setItem('proveedorTemporal', JSON.stringify(datos));
+        }
+
+     
+        function cargarDatosTemporales() {
+            const datosGuardados = localStorage.getItem('proveedorTemporal');
+            if (datosGuardados) {
+                const datos = JSON.parse(datosGuardados);
+                document.getElementById('nombre-nuevo').value = datos.nombre || '';
+                document.getElementById('empresa-nuevo').value = datos.empresa || '';
+                document.getElementById('contacto-nuevo').value = datos.contacto || '';
+                document.getElementById('rol-nuevo').value = datos.clasificacion || 'null';
+                document.getElementById('productos-nuevo').value = datos.productos || '';
+                document.getElementById('activo-nuevo').value = datos.activo || '1';
+            }
+        }
+
+
+        function limpiarDatosTemporales() {
+            localStorage.removeItem('proveedorTemporal');
+        }
+
+      
+        document.addEventListener('DOMContentLoaded', function() {
+            const campos = ['nombre-nuevo', 'empresa-nuevo', 'contacto-nuevo', 'rol-nuevo', 'productos-nuevo', 'activo-nuevo'];
+            campos.forEach(id => {
+                document.getElementById(id).addEventListener('input', guardarDatosTemporales);
+                document.getElementById(id).addEventListener('change', guardarDatosTemporales);
+            });
+        });
+
         function modalAgregar(){
             document.getElementById("formulario-nuevo").reset();
+            cargarDatosTemporales();
             $('#modalAgregar').modal('show');
         }
     </script>
 
-<script>
-    function nuevoProveedor() {
-    let nombre = document.getElementById('nombre-nuevo').value.trim();
-    let empresa = document.getElementById('empresa-nuevo').value.trim();
-    let contacto = document.getElementById('contacto-nuevo').value.trim();
-    let clasificacion = document.getElementById('rol-nuevo').value;
-    let productos = document.getElementById('productos-nuevo').value.trim();
-    let activo = document.getElementById('activo-nuevo').value;
+    <script>
+        function nuevoProveedor() {
+            let nombre = document.getElementById('nombre-nuevo').value.trim();
+            let empresa = document.getElementById('empresa-nuevo').value.trim();
+            let contacto = document.getElementById('contacto-nuevo').value.trim();
+            let clasificacion = document.getElementById('rol-nuevo').value;
+            let productos = document.getElementById('productos-nuevo').value.trim();
+            let activo = document.getElementById('activo-nuevo').value;
 
-
-    if (!nombre || !empresa || !contacto || !clasificacion || !productos) {
-        toastr.error('Debe completar todos los campos');
-        return;
-    }
-
-    let formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('empresa', empresa);
-    formData.append('contacto', contacto);
-    formData.append('clasificacion', clasificacion);
-    formData.append('productos', productos); 
-    formData.append('activo', activo);
-
-
-    axios.post("{{ url('admin/proveedores/store') }}", formData)
-        .then(response => {
-            if (response.data.success) {
-                toastr.success('Proveedor guardado exitosamente');
-                $('#modalAgregar').modal('hide');
-                $('#tablaDatatable').load("{{ URL::to('admin/proveedores/tabla') }}");
-            } else {
-                toastr.error(response.data.message || 'Error al guardar');
+            if (!nombre || !empresa || !contacto || !clasificacion || !productos) {
+                toastr.error('Debe completar todos los campos');
+                return;
             }
-        })
-        .catch(error => {
-            toastr.error('Error al guardar proveedor');
-        });
-}
 
-</script>
+            let formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('empresa', empresa);
+            formData.append('contacto', contacto);
+            formData.append('clasificacion', clasificacion);
+            formData.append('productos', productos); 
+            formData.append('activo', activo);
 
-
+            axios.post("{{ url('admin/proveedores/store') }}", formData)
+                .then(response => {
+                    if (response.data.success) {
+                        toastr.success('Proveedor guardado exitosamente');
+                        $('#modalAgregar').modal('hide');
+                        limpiarDatosTemporales();
+                        $('#tablaDatatable').load("{{ URL::to('admin/proveedores/tabla') }}");
+                    } else {
+                        toastr.error(response.data.message || 'Error al guardar');
+                    }
+                })
+                .catch(error => {
+                    toastr.error('Error al guardar proveedor');
+                });
+        }
+    </script>
 
 @stop
